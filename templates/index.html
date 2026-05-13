@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clube do Livro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <header class="cabecalho">
+        <h1>&#9998; Clube do Livro</h1>
+        <span>|</span>
+        <nav class="nav-cabecalho">
+            <a href="#cadastro">Cadastrar</a>
+            <a href="#livros">Meus Livros</a>
+            <a href="#recomendacoes">Recomendações</a>
+        </nav>
+    </header>
+
+    <main class="conteudo-principal">
+
+        <!-- ── Coluna lateral ──────────────────────────────── -->
+        <aside class="coluna-lateral">
+
+            <!-- Cadastro de livro -->
+            <section class="bloco" id="cadastro">
+                <h3>Adicionar Livro</h3>
+                <form id="form_cadastro_livro" onsubmit="cadastrar_livro(event)">
+                    <div class="campo">
+                        <label for="titulo">Título</label>
+                        <input type="text" id="titulo" name="titulo" placeholder="Título do livro" required>
+                    </div>
+                    <div class="campo">
+                        <label for="autor">Autor</label>
+                        <input type="text" id="autor" name="autor" placeholder="Nome do autor" required>
+                    </div>
+                    <div class="campo">
+                        <label for="genero">Gênero</label>
+                        <input type="text" id="genero" name="genero" placeholder="Ex: Romance, Ficção..." required>
+                    </div>
+                    <div class="campo">
+                        <label for="ano_publicacao">Ano de Publicação</label>
+                        <input type="number" id="ano_publicacao" name="ano_publicacao"
+                               placeholder="Ex: 1984" min="1000" max="2099" required>
+                    </div>
+                    <div id="feedback_cadastro"></div>
+                    <button type="submit" class="btn btn-primario" style="margin-top:6px">Adicionar Livro</button>
+                </form>
+            </section>
+
+            <!-- Filtros de busca -->
+            <section class="bloco">
+                <h3>Buscar Livros</h3>
+                <div class="linha-busca">
+                    <input type="text" name="query" id="campo_busca" placeholder="Buscar...">
+                    <select id="filtro">
+                        <option value="todos">Título</option>
+                        <option value="por_autor">Autor</option>
+                        <option value="por_genero">Gênero</option>
+                    </select>
+                </div>
+                <button type="button" class="btn btn-secundario btn-pequeno" onclick="buscar_query()">Buscar</button>
+            </section>
+
+        </aside>
+
+        <!-- ── Coluna principal ─────────────────────────────── -->
+        <section id="livros">
+
+            <!-- Filtros de status -->
+            <div class="filtros-status">
+                <input type="radio" class="filtro-radio" id="radio_todos"
+                       name="filtro_livros" onclick="buscar_query()" checked>
+                <label class="filtro-label" for="radio_todos">Todos</label>
+
+                <input type="radio" class="filtro-radio" id="radio_nao_lidos"
+                       name="filtro_livros" onclick="buscar_query()">
+                <label class="filtro-label" for="radio_nao_lidos">Não Lidos</label>
+
+                <input type="radio" class="filtro-radio" id="radio_lidos"
+                       name="filtro_livros" onclick="buscar_query()">
+                <label class="filtro-label" for="radio_lidos">Lidos</label>
+            </div>
+
+            <!-- Lista de livros -->
+            <div id="container_livros" class="lista-livros"></div>
+
+            <!-- Recomendações -->
+            <section class="secao-recomendacoes" id="recomendacoes">
+                <div class="bloco">
+                    <h2>Recomendações Personalizadas</h2>
+                    <p style="font-size:13px; color:var(--cor-texto-suave); margin-bottom:12px">
+                        Sugestões baseadas nos seus gêneros e autores favoritos.
+                    </p>
+                    <div id="recomendacoes_de_livros"></div>
+
+                    <hr class="separador">
+
+                    <p style="font-size:13px; color:var(--cor-texto-suave); margin-bottom:10px">
+                        Recomendação por inteligência artificial com justificativa personalizada.
+                    </p>
+                    <button type="button" class="btn btn-secundario btn-pequeno btn-ia"
+                            onclick="chamar_recomendacoes_ia()">
+                        Consultar IA
+                    </button>
+                    <div id="recomendacoes_ia" style="margin-top:10px"></div>
+                </div>
+            </section>
+
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script>
+        buscar_query();
+        recomendacoes();
+    </script>
+</body>
+</html>

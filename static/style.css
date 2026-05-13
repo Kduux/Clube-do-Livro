@@ -1,0 +1,433 @@
+/* ============================================================
+   CLUBE DO LIVRO — Estilo inspirado no Skoob
+   Paleta: Fundo papel (#f5f2eb) + Acento ferrugem (#9c4a1a)
+   ============================================================ */
+
+:root {
+    --cor-fundo:       #f5f2eb;
+    --cor-superficie:  #ffffff;
+    --cor-texto:       #2a2a2a;
+    --cor-texto-suave: #666666;
+    --cor-acento:      #9c4a1a;
+    --cor-acento-escuro: #7a3813;
+    --cor-borda:       #ddd8ce;
+    --cor-sucesso:     #2e7d32;
+    --cor-erro:        #c62828;
+    --cor-aviso:       #e65100;
+    --raio:            3px;
+    --fonte-titulo:    Georgia, 'Times New Roman', serif;
+    --fonte-corpo:     'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--fonte-corpo);
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* ── Cabeçalho ────────────────────────────────────────────── */
+
+.cabecalho {
+    background-color: var(--cor-superficie);
+    border-bottom: 2px solid var(--cor-acento);
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    height: 56px;
+    gap: 16px;
+}
+
+.cabecalho h1 {
+    font-family: var(--fonte-titulo);
+    font-size: 22px;
+    color: var(--cor-acento);
+    font-weight: normal;
+    letter-spacing: 0.5px;
+}
+
+.cabecalho span {
+    color: var(--cor-borda);
+    font-size: 20px;
+}
+
+.nav-cabecalho {
+    margin-left: auto;
+    display: flex;
+    gap: 4px;
+}
+
+.nav-cabecalho a {
+    color: var(--cor-texto-suave);
+    text-decoration: none;
+    font-size: 13px;
+    padding: 6px 12px;
+    border-radius: var(--raio);
+    transition: background 0.15s;
+}
+
+.nav-cabecalho a:hover {
+    background: var(--cor-fundo);
+    color: var(--cor-acento);
+}
+
+/* ── Layout principal ─────────────────────────────────────── */
+
+.conteudo-principal {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 28px 20px;
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 24px;
+    align-items: start;
+}
+
+/* ── Bloco lateral (cadastro + filtros) ───────────────────── */
+
+.coluna-lateral {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* ── Bloco genérico (card) ────────────────────────────────── */
+
+.bloco {
+    background: var(--cor-superficie);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio);
+    padding: 18px 20px;
+}
+
+.bloco h2,
+.bloco h3 {
+    font-family: var(--fonte-titulo);
+    font-weight: normal;
+    color: var(--cor-texto);
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--cor-borda);
+    font-size: 16px;
+}
+
+/* ── Formulários ──────────────────────────────────────────── */
+
+.campo {
+    margin-bottom: 10px;
+}
+
+.campo label {
+    display: block;
+    font-size: 12px;
+    color: var(--cor-texto-suave);
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio);
+    font-family: var(--fonte-corpo);
+    font-size: 14px;
+    background: var(--cor-superficie);
+    color: var(--cor-texto);
+    transition: border-color 0.15s;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--cor-acento);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 64px;
+}
+
+/* ── Botões ───────────────────────────────────────────────── */
+
+.btn {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: var(--raio);
+    font-size: 13px;
+    font-family: var(--fonte-corpo);
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: background 0.15s, color 0.15s;
+    text-align: center;
+}
+
+.btn-primario {
+    background: var(--cor-acento);
+    color: #fff;
+    border-color: var(--cor-acento);
+    width: 100%;
+}
+
+.btn-primario:hover {
+    background: var(--cor-acento-escuro);
+    border-color: var(--cor-acento-escuro);
+}
+
+.btn-secundario {
+    background: transparent;
+    color: var(--cor-acento);
+    border-color: var(--cor-acento);
+}
+
+.btn-secundario:hover {
+    background: var(--cor-acento);
+    color: #fff;
+}
+
+.btn-pequeno {
+    padding: 5px 12px;
+    font-size: 12px;
+}
+
+/* ── Filtros de status (radio) ────────────────────────────── */
+
+.filtros-status {
+    display: flex;
+    gap: 0;
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio);
+    overflow: hidden;
+    margin-bottom: 14px;
+}
+
+.filtro-radio {
+    display: none;
+}
+
+.filtro-label {
+    flex: 1;
+    text-align: center;
+    padding: 7px 0;
+    font-size: 12px;
+    cursor: pointer;
+    color: var(--cor-texto-suave);
+    border-right: 1px solid var(--cor-borda);
+    transition: background 0.15s, color 0.15s;
+    user-select: none;
+}
+
+.filtro-label:last-child {
+    border-right: none;
+}
+
+.filtro-radio:checked + .filtro-label {
+    background: var(--cor-acento);
+    color: #fff;
+}
+
+/* ── Busca ────────────────────────────────────────────────── */
+
+.linha-busca {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 8px;
+}
+
+.linha-busca input {
+    flex: 1;
+}
+
+.linha-busca select {
+    width: auto;
+    flex-shrink: 0;
+}
+
+/* ── Cards de livro ───────────────────────────────────────── */
+
+.lista-livros {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.card-livro {
+    background: var(--cor-superficie);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio);
+    padding: 14px 16px;
+    border-left: 3px solid var(--cor-borda);
+}
+
+.card-livro.lido {
+    border-left-color: var(--cor-acento);
+}
+
+.card-livro h3 {
+    font-family: var(--fonte-titulo);
+    font-size: 16px;
+    font-weight: normal;
+    margin-bottom: 4px;
+}
+
+.card-livro .meta {
+    font-size: 12px;
+    color: var(--cor-texto-suave);
+    margin-bottom: 6px;
+}
+
+.badge-status {
+    display: inline-block;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: var(--raio);
+    font-weight: bold;
+    letter-spacing: 0.3px;
+}
+
+.badge-lido {
+    background: #e8f5e9;
+    color: var(--cor-sucesso);
+}
+
+.badge-nao-lido {
+    background: #fff3e0;
+    color: var(--cor-aviso);
+}
+
+.card-livro .detalhes {
+    margin-top: 8px;
+    font-size: 13px;
+    color: var(--cor-texto-suave);
+    line-height: 1.5;
+}
+
+.acoes-livro {
+    margin-top: 10px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* ── Formulário de avaliação inline ───────────────────────── */
+
+.area-avaliacao {
+    margin-top: 12px;
+    padding: 14px;
+    background: var(--cor-fundo);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio);
+}
+
+.area-avaliacao p {
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.area-avaliacao .campo label {
+    font-size: 11px;
+}
+
+/* ── Recomendações ────────────────────────────────────────── */
+
+.secao-recomendacoes {
+    margin-top: 28px;
+}
+
+.card-recomendacao {
+    background: var(--cor-superficie);
+    border: 1px solid var(--cor-borda);
+    border-left: 3px solid var(--cor-acento);
+    border-radius: var(--raio);
+    padding: 12px 14px;
+    margin-top: 8px;
+}
+
+.card-recomendacao h4 {
+    font-family: var(--fonte-titulo);
+    font-size: 15px;
+    font-weight: normal;
+    margin-bottom: 3px;
+}
+
+.card-recomendacao .meta {
+    font-size: 12px;
+    color: var(--cor-texto-suave);
+}
+
+.card-ia {
+    margin-top: 12px;
+    padding: 16px;
+    background: var(--cor-superficie);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio);
+}
+
+.card-ia p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--cor-texto);
+}
+
+.btn-ia {
+    margin-top: 12px;
+}
+
+/* ── Mensagens de feedback ────────────────────────────────── */
+
+.msg {
+    font-size: 13px;
+    padding: 8px 12px;
+    border-radius: var(--raio);
+    margin-top: 8px;
+}
+
+.msg-sucesso {
+    background: #e8f5e9;
+    color: var(--cor-sucesso);
+    border: 1px solid #a5d6a7;
+}
+
+.msg-erro {
+    background: #ffebee;
+    color: var(--cor-erro);
+    border: 1px solid #ef9a9a;
+}
+
+.msg-info {
+    background: var(--cor-fundo);
+    color: var(--cor-texto-suave);
+    border: 1px solid var(--cor-borda);
+}
+
+/* ── Mensagem de lista vazia ──────────────────────────────── */
+
+.vazio {
+    text-align: center;
+    color: var(--cor-texto-suave);
+    font-size: 14px;
+    padding: 32px 0;
+}
+
+/* ── Separador de seção ───────────────────────────────────── */
+
+.separador {
+    border: none;
+    border-top: 1px solid var(--cor-borda);
+    margin: 20px 0;
+}

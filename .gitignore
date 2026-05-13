@@ -1,0 +1,17 @@
+*.db
+*.sqlite
+*.sqlite3
+clube_do_livro.db
+
+__pycache__/
+*.py[cod]
+*$py.class
+
+venv/
+env/
+.venv/
+
+.env
+
+.DS_Store
+Thumbs.db
