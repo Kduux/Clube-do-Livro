@@ -4,13 +4,13 @@
    ============================================================ */
 
 :root {
-    --cor-fundo:       #f5f2eb;
-    --cor-superficie:  #ffffff;
-    --cor-texto:       #2a2a2a;
-    --cor-texto-suave: #666666;
-    --cor-acento:      #9c4a1a;
-    --cor-acento-escuro: #7a3813;
-    --cor-borda:       #ddd8ce;
+    --cor-fundo:         #f0f2f8;
+    --cor-superficie:    #ffffff;
+    --cor-texto:         #1e2433;
+    --cor-texto-suave:   #4a5980;
+    --cor-acento:        #4a5980;
+    --cor-acento-escuro: #2f3a52;
+    --cor-borda:         #6483cc;
     --cor-sucesso:     #2e7d32;
     --cor-erro:        #c62828;
     --cor-aviso:       #e65100;

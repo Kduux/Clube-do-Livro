@@ -66,13 +66,13 @@ function listar_livros(livros, leituras, mensagemVazia) {
         }
 
     if (livros_visiveis < livros.length) {
-    container.innerHTML += `<button onclick="mostrar_mais()">
+    container.innerHTML += `<button class = "btn-primario" onclick="mostrar_mais()">
         Mostrar mais (${livros.length - livros_visiveis} restantes)
     </button>`;
     }
 
     if (livros_visiveis > 3) {
-        container.innerHTML += `<button onclick="mostrar_menos()">
+        container.innerHTML += `<button class = "btn-primario" onclick="mostrar_menos()">
             Mostrar menos
         </button>`;
     }
@@ -137,11 +137,11 @@ function form_avaliacao(id_livro) {
             <form onsubmit="enviar_avaliacao(event, ${id_livro})">
                 <div class="campo">
                     <label>Nota (1 a 5)</label>
-                    <input type="number" name="nota" min="1" max="5" style="width:70px">
+                    <input type="number" name="nota" min="1" max="5" style="width:70px" required>
                 </div>
                 <div class="campo">
                     <label>Comentário</label>
-                    <textarea name="comentario" maxlength="500"></textarea>
+                    <textarea name="comentario" maxlength="500" required></textarea>
                 </div>
                 <div class="acoes-livro">
                     <button type="submit" class="btn btn-primario btn-pequeno"

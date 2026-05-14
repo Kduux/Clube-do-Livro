@@ -105,14 +105,18 @@ def gerenciar_leituras(id_livro):
     nota       = dados.get('nota')
     comentario = dados.get('comentario', '')
 
-    if nota is not None and not (1 <= int(nota) <= 5):
+    if nota == None or comentario == None:
+        return jsonify({'status': 'error', 'message': 'Todos os campos são obrigatórios!'}), 400
+    
+    elif 1 >= int(nota) >= 5:
         con.close()
         return jsonify({'status': 'error', 'message': 'Nota deve ser entre 1 e 5'}), 400
 
-    con.execute(
-        'UPDATE leituras SET nota = ?, comentario = ? WHERE id_livro = ?',
-        (nota, comentario, id_livro)
-    )
+    else:
+        con.execute(
+            'UPDATE leituras SET nota = ?, comentario = ? WHERE id_livro = ?',
+            (nota, comentario, id_livro)
+        )
     con.commit()
     con.close()
     return jsonify({'status': 'success', 'message': 'Avaliação salva com sucesso!'}), 200
@@ -229,7 +233,6 @@ def recomendacoes_ia():
         return jsonify({'recomendacao': resposta.text.strip()}), 200
     except Exception as e:
         return jsonify({'status': 'error', 'message': f'Erro na IA: {str(e)}'}), 500
-
 
 if __name__ == '__main__':
     app.run(debug=True)
