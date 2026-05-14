@@ -26,7 +26,7 @@ Aplicação web para gerenciamento de leituras pessoais. Permite cadastrar livro
 
 ```bash
 git clone <url-do-repositorio>
-cd trilogo-desafi
+cd Clube-do-Livro
 ```
 
 ### 3. Instale as dependências
